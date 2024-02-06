@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+
+class NewFeature {
+  final String id;
+  final String name;
+
+  NewFeature({required this.id, required this.name});
+}
+
+class NewFeatureService {
+  Future<NewFeature> getNewFeature(String id) async {
+    // Simulate a network request
+    await Future.delayed(Duration(seconds: 2));
+
+    return NewFeature(id: id, name: 'New Feature');
+  }
+}

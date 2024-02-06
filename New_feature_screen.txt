@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:your_app/new_feature.dart';
+
+class NewFeatureScreen extends StatefulWidget {
+  @override
+  _NewFeatureScreenState createState() => _NewFeatureScreenState();
+}
+
+class _NewFeatureScreenState extends State<NewFeatureScreen> {
+  Future<NewFeature>? _newFeature;
+
+  @override
+  void initState() {
+    super.initState();
+    _newFeature = NewFeatureService().getNewFeature('1');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Feature'),
+      ),
+      body: FutureBuilder<NewFeature>(
+        future: _newFeature,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Center(
+              child: Text('Welcome to the new feature: ${snapshot.data!.name}'),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
+
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
+    );
+  }
+}

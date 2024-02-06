@@ -1,0 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:your_app/new_feature.dart';
+
+class DashboardScreen extends StatefulWidget {
+  @override
+  _DashboardScreenState createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  void _navigateToNewFeature() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => NewFeatureScreen()),
+   
